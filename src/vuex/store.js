@@ -7,7 +7,7 @@ export default createStore ({
         mainTitle: "No Title",
         mainDescription: "No Description",
     },
-    // mutations to change the state
+    // mutations to change the state, for synchronous actions
     mutations: {
         // functions to update the state mainTitle
         setNewTitle (state, payload) {
@@ -15,5 +15,11 @@ export default createStore ({
             // to accept multiple parameters in object,
             state.mainTitle = "Updated Title from mutation + " + payload.title;
         },
+    },
+    // actions for asynchronous mutations
+    actions: {
+        newTitle(context, payload){
+            context.commit("setNewTitle", payload);
+        }
     }
 })

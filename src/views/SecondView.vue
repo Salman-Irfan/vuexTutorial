@@ -11,18 +11,28 @@
         methods: {
             newTitle(){
                 // or simple
-                this.$store.state.mainDescription = "change description to parameter payload simply"
+                // this.$store.state.mainDescription = "change description to parameter payload simply"
+                
                 // to commit changes
-                this.$store.commit('setNewTitle', "change title to parameter payload");
+                // this.$store.commit('setNewTitle', "change title to parameter payload");
+                
                 // to pass the multiple parameters, we use object
-                this.$store.commit('setNewTitle', {
-                    title: "change title to parameter payload in object form",
-                    description: "change description to parameter payload",
-                });
+                // this.$store.commit('setNewTitle', {
+                //     title: "change title to parameter payload in object form",
+                //     description: "change description to parameter payload",
+                // });
+                
                 // another way is to pass commit in the form of object
-                this.$store.commit({
-                    type: 'setNewTitle',
-                    title: "change title to parameter payload in commit object form",
+                // this.$store.commit({
+                //     type: 'setNewTitle',
+                //     title: "change title to parameter payload in commit object form",
+                // })
+
+                // ########################################################
+                // by calling action method
+                this.$store.dispatch({
+                    type: 'newTitle',
+                    title: "title updated through actions",
                 })
                 
             }
