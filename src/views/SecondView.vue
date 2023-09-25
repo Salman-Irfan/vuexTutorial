@@ -1,5 +1,6 @@
 <template>
     <h1>Second View</h1>
+    <h4>{{ privateKey }}</h4>
     <h6>{{ $store.state.mainDescription }}</h6>
     <!-- change the main title that is called on its parent component -->
     <button @click="newTitle" class="btn">Change Title</button>
@@ -8,6 +9,11 @@
 <script>
     export default {
         name: "Second Page",
+        computed: {
+            privateKey(){
+                return this.$store.getters.hashAdd;
+            }
+        },
         methods: {
             newTitle(){
                 // or simple
@@ -37,13 +43,20 @@
 
                 // #################################################################
                 // returning promise
+                // this.$store.dispatch({
+                //     type: 'newTitle',
+                //     title: "title updated through actions using promises",
+                // }).then((response) => {
+                //     console.log(`called`, response)
+                // },)
+                
+                // promises part 2
                 this.$store.dispatch({
                     type: 'newTitle',
                     title: "title updated through actions using promises",
                 }).then((response) => {
                     console.log(`called`, response)
                 },)
-                
             }
         }
     }

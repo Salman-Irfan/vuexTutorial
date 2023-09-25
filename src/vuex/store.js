@@ -6,6 +6,7 @@ export default createStore({
         name: "salman",
         mainTitle: "No Title",
         mainDescription: "No Description",
+        secretKey: "888"
     },
     // mutations to change the state, for synchronous actions
     mutations: {
@@ -35,6 +36,12 @@ export default createStore({
                     resolve("setNewTitle", payload);
                 }, 500);
             })
+        },
+    },
+    // getters
+    getters: {
+        hashAdd(state) {
+            return state.secretKey + "##"
         }
     }
 })
