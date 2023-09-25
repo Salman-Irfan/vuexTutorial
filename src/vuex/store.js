@@ -1,6 +1,6 @@
 import { createStore } from "vuex";
 
-export default createStore ({
+export default createStore({
     // initial states
     state: {
         name: "salman",
@@ -10,7 +10,7 @@ export default createStore ({
     // mutations to change the state, for synchronous actions
     mutations: {
         // functions to update the state mainTitle
-        setNewTitle (state, payload) {
+        setNewTitle(state, payload) {
             state.mainTitle = 'Updated Title from mutation + ' + payload;
             // to accept multiple parameters in object,
             state.mainTitle = "Updated Title from mutation + " + payload.title;
@@ -18,11 +18,23 @@ export default createStore ({
     },
     // actions for asynchronous mutations
     actions: {
-        newTitle(context, payload){
+        // part 2, set time out
+        // newTitle(context, payload){
+        //     // now from api, setTimeout
+        //     setTimeout(() => {
+        //         context.commit("setNewTitle", payload);
+        //     }, 500);
+        // }
+
+        // part 3, promises
+        newTitle(context, payload) {
             // now from api, setTimeout
-            setTimeout(() => {
-                context.commit("setNewTitle", payload);
-            }, 500);
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    context.commit("setNewTitle", payload);
+                    resolve("setNewTitle", payload);
+                }, 500);
+            })
         }
     }
 })

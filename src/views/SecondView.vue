@@ -30,10 +30,19 @@
 
                 // ########################################################
                 // by calling action method
+                // this.$store.dispatch({
+                //     type: 'newTitle',
+                //     title: "title updated through actions",
+                // })
+
+                // #################################################################
+                // returning promise
                 this.$store.dispatch({
                     type: 'newTitle',
-                    title: "title updated through actions",
-                })
+                    title: "title updated through actions using promises",
+                }).then((response) => {
+                    console.log(`called`, response)
+                },)
                 
             }
         }
