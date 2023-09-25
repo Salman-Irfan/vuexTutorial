@@ -19,7 +19,10 @@ export default createStore ({
     // actions for asynchronous mutations
     actions: {
         newTitle(context, payload){
-            context.commit("setNewTitle", payload);
+            // now from api, setTimeout
+            setTimeout(() => {
+                context.commit("setNewTitle", payload);
+            }, 500);
         }
     }
 })
